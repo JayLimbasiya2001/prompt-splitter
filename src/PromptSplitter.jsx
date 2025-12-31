@@ -11,8 +11,7 @@ useEffect(() => {
     // Only load ads on live site
     if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
       const script = document.createElement("script");
-      script.src =
-        "https://monthly-ease.com/b.3WVv0JPk3Hp/vcbRmwVGJlZ_Dp0u2/NozrM/4DNKD_AfylL/TzYQ3mMWzTgU0uMAD/Me";
+      script.src = "https://monthly-ease.com/b.3WVv0JPk3Hp/vcbRmwVGJlZ_Dp0u2/NozrM/4DNKD_AfylL/TzYQ3mMWzTgU0uMAD/Me";
       script.async = true;
       script.type = "text/javascript";
       script.onload = () => {
@@ -20,7 +19,11 @@ useEffect(() => {
         setAdsLoaded(true);
       };
       script.onerror = () => {
-        console.error("Failed to load ad script");
+        console.error("Failed to load ad script. Please verify:");
+        console.error("1. Your HilltopAds account is approved");
+        console.error("2. The ad zone is active");
+        console.error("3. The script URL is correct");
+        console.error("4. Your domain is added to HilltopAds");
       };
       const container = document.getElementById("ad-container");
       if (container) {
