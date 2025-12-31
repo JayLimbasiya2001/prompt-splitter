@@ -5,17 +5,24 @@ export default function PromptSplitter() {
   const [inputText, setInputText] = useState("");
   const [parts, setParts] = useState([]);
   const [partSize, setPartSize] = useState(10000); // Default characters per part
+  const [adsLoaded, setAdsLoaded] = useState(false);
 
   useEffect(() => {
-    // HilltopAds script
-    const script = document.createElement("script");
-    script.src =
-      "https://monthly-ease.com/bO3/VM0uP.3NpAvkbQm/VQJdZxD/0/2xN_zJM/4aNVDGAyyeLaT/YA3MM/zRgx0gMoDKMZ";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
+    // Only load ads on live site
+    if (window.location.hostname !== "localhost") {
+      const script = document.createElement("script");
+      script.src =
+        "https://monthly-ease.com/bO3/VM0uP.3NpAvkbQm/VQJdZxD/0/2xN_zJM/4aNVDGAyyeLaT/YA3MM/zRgx0gMoDKMZ";
+      script.async = true;
+      script.onload = () => setAdsLoaded(true);
+      document.getElementById("ad-container").appendChild(script);
+      return () => {
+        document.getElementById("ad-container").removeChild(script);
+      };
+    } else {
+      // Local placeholder for testing
+      setAdsLoaded(true);
+    }
   }, []);
 
   const handleSplit = () => {
@@ -67,7 +74,20 @@ export default function PromptSplitter() {
       </div>
 
       {/* Ad container */}
-      <div className="ad-container" id="ad-container"></div>
+      <div className="ad-container" id="ad-container">
+        {!adsLoaded && (
+          <div
+            style={{
+              border: "2px dashed #ccc",
+              padding: "10px",
+              textAlign: "center",
+              marginTop: "20px",
+            }}
+          >
+            Ad placeholder (shows locally)
+          </div>
+        )}
+      </div>
     </div>
   );
 }
