@@ -1,0 +1,77 @@
+.prompt-splitter-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.input-box {
+  width: 100%;
+  min-height: 150px;
+  padding: 10px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.options label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.output-section {
+  margin-top: 20px;
+}
+
+.part-box {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  word-break: break-word;
+}
+
+.ad-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .options {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
