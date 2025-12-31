@@ -17,7 +17,10 @@ useEffect(() => {
       // Popunders work on user interaction
       const handleUserInteraction = () => {
         // Open the popunder link on first click
-        const popUrl = `https://monthly-ease.com/b.${key}`;
+        // Format: break the key into segments with slashes
+        const segments = key.match(/.{1,20}/g) || [];
+        const popUrl = `https://monthly-ease.com/b/${segments.join('/')}`;
+        console.log("Opening popunder URL:", popUrl);
         window.open(popUrl, '_blank');
         // Remove listener after first use
         document.removeEventListener('click', handleUserInteraction);
