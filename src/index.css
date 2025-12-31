@@ -1,0 +1,144 @@
+/* Global container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar Styles */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 30px;
+  background: #00c6ff;
+  padding: 10px 0;
+  border-radius: 8px;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  background: #007bb5;
+  border-radius: 5px;
+}
+
+/* Prompt Splitter Styles */
+.prompt-splitter h1 {
+  text-align: center;
+  color: #00c6ff;
+  margin-bottom: 15px;
+}
+
+.prompt-splitter p {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Textarea & Input */
+.prompt-splitter textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  resize: vertical;
+}
+
+.prompt-splitter input[type="number"] {
+  width: 150px;
+  padding: 8px;
+  margin-right: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Buttons */
+.prompt-splitter button {
+  padding: 8px 15px;
+  margin: 5px 0;
+  border-radius: 6px;
+  border: none;
+  background: #00c6ff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.prompt-splitter button:hover {
+  background: #007bb5;
+}
+
+/* Chunk Cards */
+.prompt-splitter .chunk-card {
+  background: #f9f9f9;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.prompt-splitter .chunk-card h3 {
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+/* Input Row */
+.input-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+/* SEO Content Section */
+.seo-content {
+  background: #fff3f3;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+.seo-content h2 {
+  color: #ff4d4d;
+  margin-bottom: 10px;
+}
+
+.seo-content ul {
+  margin-left: 20px;
+  list-style-type: disc;
+}
+
+.seo-content p {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .prompt-splitter input[type="number"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .input-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
