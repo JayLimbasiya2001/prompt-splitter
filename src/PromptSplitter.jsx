@@ -12,7 +12,7 @@ useEffect(() => {
     if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
       const script = document.createElement("script");
       script.src =
-        "https://monthly-ease.com/bO3/VM0uP.3NpAvkbQm/VQJdZxD/0/2xN_zJM/4aNVDGAyyeLaT/YA3/MM/zRgx0gMoDKMZ";
+        "https://monthly-ease.com/b.3WVv0JPk3Hp/vcbRmwVGJlZ_Dp0u2/NozrM/4DNKD_AfylL/TzYQ3mMWzTgU0uMAD/Me";
       script.async = true;
       script.type = "text/javascript";
       script.onload = () => {
