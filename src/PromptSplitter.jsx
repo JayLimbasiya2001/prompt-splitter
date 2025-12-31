@@ -7,17 +7,30 @@ export default function PromptSplitter() {
   const [partSize, setPartSize] = useState(10000); // Default characters per part
   const [adsLoaded, setAdsLoaded] = useState(false);
 
-  useEffect(() => {
+useEffect(() => {
     // Only load ads on live site
-    if (window.location.hostname !== "localhost") {
+    if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
       const script = document.createElement("script");
       script.src =
-        "https://monthly-ease.com/bO3/VM0uP.3NpAvkbQm/VQJdZxD/0/2xN_zJM/4aNVDGAyyeLaT/YA3MM/zRgx0gMoDKMZ";
+        "https://monthly-ease.com/bO3/VM0uP.3NpAvkbQm/VQJdZxD/0/2xN_zJM/4aNVDGAyyeLaT/YA3/MM/zRgx0gMoDKMZ";
       script.async = true;
-      script.onload = () => setAdsLoaded(true);
-      document.getElementById("ad-container").appendChild(script);
+      script.type = "text/javascript";
+      script.onload = () => {
+        console.log("Ad script loaded successfully");
+        setAdsLoaded(true);
+      };
+      script.onerror = () => {
+        console.error("Failed to load ad script");
+      };
+      const container = document.getElementById("ad-container");
+      if (container) {
+        container.appendChild(script);
+      }
       return () => {
-        document.getElementById("ad-container").removeChild(script);
+        const container = document.getElementById("ad-container");
+        if (container && script.parentNode === container) {
+          container.removeChild(script);
+        }
       };
     } else {
       // Local placeholder for testing
