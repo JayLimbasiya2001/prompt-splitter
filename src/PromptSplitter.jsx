@@ -10,30 +10,42 @@ export default function PromptSplitter() {
 useEffect(() => {
     // Only load ads on live site
     if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
+      // For HilltopAds Direct URL, we need to use it differently
+      // Option 1: Try loading as popunder script instead
       const script = document.createElement("script");
-      script.src = "https://monthly-ease.com/b.3WVv0JPk3Hp/vcbRmwVGJlZ_Dp0u2/NozrM/4DNKD_AfylL/TzYQ3mMWzTgU0uMAD/Me";
-      script.async = true;
       script.type = "text/javascript";
-      script.onload = () => {
-        console.log("Ad script loaded successfully");
+      script.innerHTML = `
+        atOptions = {
+          'key' : '3WVv0JPk3HpvcbRmwVGJlZ_Dp0u2NozrM4DNKD_AfylLTzYQ3mMWzTgU0uMADMe',
+          'format' : 'iframe',
+          'height' : 250,
+          'width' : 300,
+          'params' : {}
+        };
+      `;
+      document.head.appendChild(script);
+      
+      const invokeScript = document.createElement("script");
+      invokeScript.type = "text/javascript";
+      invokeScript.src = "//www.topcreativeformat.com/3WVv0JPk3HpvcbRmwVGJlZ_Dp0u2NozrM4DNKD_AfylLTzYQ3mMWzTgU0uMADMe/invoke.js";
+      invokeScript.async = true;
+      invokeScript.onload = () => {
+        console.log("✅ Ad script loaded successfully");
         setAdsLoaded(true);
       };
-      script.onerror = () => {
-        console.error("Failed to load ad script. Please verify:");
-        console.error("1. Your HilltopAds account is approved");
-        console.error("2. The ad zone is active");
-        console.error("3. The script URL is correct");
-        console.error("4. Your domain is added to HilltopAds");
+      invokeScript.onerror = () => {
+        console.error("❌ Failed to load ad script");
+        console.error("Note: Ads may take 24-48 hours to start showing after domain approval");
       };
+      
       const container = document.getElementById("ad-container");
       if (container) {
-        container.appendChild(script);
+        container.appendChild(invokeScript);
       }
+      
       return () => {
-        const container = document.getElementById("ad-container");
-        if (container && script.parentNode === container) {
-          container.removeChild(script);
-        }
+        if (script.parentNode) script.parentNode.removeChild(script);
+        if (invokeScript.parentNode) invokeScript.parentNode.removeChild(invokeScript);
       };
     } else {
       // Local placeholder for testing
