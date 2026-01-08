@@ -4,59 +4,58 @@ import "./PromptSplitter.css";
 export default function PromptSplitter() {
   const [inputText, setInputText] = useState("");
   const [parts, setParts] = useState([]);
-  const [partSize, setPartSize] = useState(10000); // Default characters per part
+  const [partSize, setPartSize] = useState(10000);
   const [adsLoaded, setAdsLoaded] = useState(false);
 
-// useEffect(() => {
-//     // Only load ads on live site
-//     if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
-//       // HilltopAds Popunder - Direct implementation
-//       const key = "3WVv0JPk3HpvcbRmwVGJlZ_Dp0u2NozrM4DNKD_AfylLTzYQ3mMWzTgU0uMADMe";
-      
-//       // Try loading the direct URL link instead of script for popunder
-//       // Popunders work on user interaction
-//       const handleUserInteraction = () => {
-//         // Open the popunder link on first click
-//         // Format: break the key into segments with slashes
-//         const segments = key.match(/.{1,20}/g) || [];
-//         const popUrl = `https://monthly-ease.com/b/${segments.join('/')}`;
-//         console.log("Opening popunder URL:", popUrl);
-//         window.open(popUrl, '_blank');
-//         // Remove listener after first use
-//         document.removeEventListener('click', handleUserInteraction);
-//         console.log("✅ Popunder triggered");
-//       };
-      
-//       // Add click listener for popunder
-//       document.addEventListener('click', handleUserInteraction, { once: true });
-      
-//       console.log("⚠️ Note: This is a POPUNDER ad zone.");
-//       console.log("It will open in a new window on first user click.");
-//       console.log("For banner ads that show on the page, create a Banner zone in HilltopAds.");
-      
-//       setAdsLoaded(true);
-      
-//       return () => {
-//         document.removeEventListener('click', handleUserInteraction);
-//       };
-//     } else {
-//       setAdsLoaded(true);
-//     }
-//   }, []);
+  useEffect(() => {
+    if (
+      window.location.hostname !== "localhost" &&
+      window.location.hostname !== "127.0.0.1"
+    ) {
+      const script = document.createElement("script");
+      script.src =
+        "//kaleidoscopicamount.com/c.D/9T6ybd2P5klZScW/Qp9pN/jpcbz/OuDbQIwjMSil0O2/NmzbMU4vN/DeAnzh";
+      script.async = true;
+      script.referrerPolicy = "no-referrer-when-downgrade";
 
+      const container = document.getElementById("ad-container");
+      if (container) {
+        container.appendChild(script);
+      }
 
-useEffect(() => {
-  if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
-    const script = document.createElement("script");
-    script.src = "//kaleidoscopicamount.com/c.D/9T6ybd2P5klZScW/Qp9pN/jpcbz/OuDbQIwjMSil0O2/NmzbMU4vN/DeAnzh";
-    script.async = true;
-    script.referrerPolicy = 'no-referrer-when-downgrade';
-    document.getElementById("ad-container").appendChild(script);
-    setAdsLoaded(true);
-  } else {
-    setAdsLoaded(true); // show placeholder locally
-  }
-}, []);
+      setAdsLoaded(true);
+    } else {
+      setAdsLoaded(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (
+      window.location.hostname !== "localhost" &&
+      window.location.hostname !== "127.0.0.1"
+    ) {
+      const script = document.createElement("script");
+      script.async = true;
+      script.referrerPolicy = "no-referrer-when-downgrade";
+      script.innerHTML = `
+        (function(zzyqo){
+          var d = document,
+              s = d.createElement('script'),
+              l = d.scripts[d.scripts.length - 1];
+          s.settings = zzyqo || {};
+          s.src = "//excitedzone.com/bPXHVRspd.G/l/0/YKW/ca/GeFmI9_u-ZCUol/krPJTQY/3/NMDqQOy/MnzokxtNNrjycU0DNKDyIu0AMaAH";
+          s.async = true;
+          s.referrerPolicy = 'no-referrer-when-downgrade';
+          l.parentNode.insertBefore(s, l);
+        })({});
+      `;
+
+      const bannerContainer = document.getElementById("banner-ad");
+      if (bannerContainer) {
+        bannerContainer.appendChild(script);
+      }
+    }
+  }, []);
 
   const handleSplit = () => {
     if (!inputText) return;
@@ -64,6 +63,7 @@ useEffect(() => {
     const splitArray = [];
     let i = 0;
     let partNumber = 1;
+
     while (i < inputText.length) {
       splitArray.push(
         `[Part ${partNumber}] ${inputText.slice(i, i + partSize)}`
@@ -71,12 +71,15 @@ useEffect(() => {
       i += partSize;
       partNumber++;
     }
+
     setParts(splitArray);
   };
 
   return (
     <div className="prompt-splitter-container">
       <h1 className="title">Prompt Splitter Tool</h1>
+
+      <div className="banner-ad" id="banner-ad"></div>
 
       <textarea
         className="input-box"
@@ -106,7 +109,6 @@ useEffect(() => {
         ))}
       </div>
 
-      {/* Ad container */}
       <div className="ad-container" id="ad-container">
         {!adsLoaded && (
           <div
