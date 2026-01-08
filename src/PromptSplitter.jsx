@@ -123,6 +123,29 @@ export default function PromptSplitter() {
           </div>
         )}
       </div>
+
+      <div>
+  <h1>Free ChatGPT Prompt Splitter Tool</h1>
+  <h2>Split Long Prompts into Smaller Parts for AI Processing</h2>
+  <p>Do you have long ChatGPT prompts that exceed token limits? Use our free online prompt splitter to divide your text into multiple smaller parts for easier AI processing.</p>
+
+  <h3>How to Use ChatGPT Prompt Splitter</h3>
+  <ol>
+    <li>Paste your long prompt in the input box.</li>
+    <li>Set the number of characters or words per part.</li>
+    <li>Click "Split Prompt" and get multiple smaller chunks.</li>
+  </ol>
+
+  <h3>Why Use This Prompt Splitter?</h3>
+  <ul>
+    <li>Handle large AI prompts without errors.</li>
+    <li>Save time by automatically splitting text.</li>
+    <li>Free and online—no registration required.</li>
+  </ul>
+
+  <p>Keywords included naturally: ChatGPT prompt splitter, split long prompts, AI tool, multi-part prompt.</p>
+</div>
+
     </div>
   );
 }
